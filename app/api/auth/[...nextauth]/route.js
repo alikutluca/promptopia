@@ -1,4 +1,4 @@
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 import User from "@models/user";
@@ -44,4 +44,4 @@ const handler = NextAuth({
   },
 });
 
-export { handler as GET, handler as Post };
+export { handler as GET, handler as POST };
