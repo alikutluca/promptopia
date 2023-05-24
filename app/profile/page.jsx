@@ -17,9 +17,8 @@ const MyProfile = () => {
       const data = await response.json();
       setPosts(data);
     };
-
     if (session?.user.id) fetchPosts();
-  }, []);
+  }, [session?.user.id]);
 
   const handleEdit = (post) => {
     router.push(`/update-prompt?id=${post._id}`);
@@ -30,7 +29,7 @@ const MyProfile = () => {
 
     if (hasConfirmed) {
       try {
-        await fetch(`/api/prompt/${post._id.toString()}`), { method: "DELETE" };
+        await fetch(`/api/prompt/${post._id.toString()}`, { method: "DELETE" });
 
         const filteredPosts = posts.filter((p) => p._id !== post._id);
         setPosts(filteredPosts);
