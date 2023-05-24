@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Nav = () => {
+  const router = useRouter();
+
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
@@ -108,6 +111,7 @@ const Nav = () => {
                   onClick={() => {
                     setToggleDropdown(false);
                     signOut();
+                    router.push("/");
                   }}
                   className="mt-5 w-full black_btn"
                 >
