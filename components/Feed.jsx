@@ -24,7 +24,7 @@ const Feed = () => {
   const fetchPosts = async () => {
     const response = await fetch("/api/prompt");
     const data = await response.json();
-    setPosts(data);
+    setAllPosts(data);
   };
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Feed = () => {
         />
       </form>
 
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <PromptCardList data={allPosts} handleTagClick={() => {}} />
     </section>
   );
 };
