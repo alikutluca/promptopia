@@ -30,7 +30,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
