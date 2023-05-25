@@ -1,8 +1,15 @@
 import Feed from "@components/Feed";
 
-const Home = async () => {
-  const response = await fetch("/api/prompt");
+const getPrompts = async () => {
+  const response = await fetch(
+    "https://promptopia-git-main-alikutluca.vercel.app/api/prompt"
+  );
   const data = await response.json();
+  return data;
+};
+
+const Home = async () => {
+  const data = await getPrompts();
 
   return (
     <section className="w-full flex-center flex-col">
