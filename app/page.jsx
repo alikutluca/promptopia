@@ -2,7 +2,8 @@ import Feed from "@components/Feed";
 
 const getPrompts = async () => {
   const response = await fetch(
-    "https://promptopia-git-main-alikutluca.vercel.app/api/prompt"
+    "https://promptopia-git-main-alikutluca.vercel.app/api/prompt",
+    { cache: "no-store" }
   );
   const data = await response.json();
   return data;
