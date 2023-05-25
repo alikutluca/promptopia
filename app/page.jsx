@@ -1,17 +1,6 @@
 import Feed from "@components/Feed";
 
-const getPrompts = async () => {
-  const response = await fetch(
-    "https://promptopia-git-main-alikutluca.vercel.app/api/prompt",
-    { cache: "no-store" }
-  );
-  const data = await response.json();
-  return data;
-};
-
-const Home = async () => {
-  const data = await getPrompts();
-
+const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
@@ -24,7 +13,7 @@ const Home = async () => {
         discover, create and share creative prompts
       </p>
 
-      <Feed data={data} />
+      <Feed />
     </section>
   );
 };

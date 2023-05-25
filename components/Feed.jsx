@@ -3,33 +3,33 @@
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
-const PromptCardList = ({ data, handleTagClick }) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {data.map((post) => (
-        <PromptCard
-          key={post._id}
-          post={post}
-          handleTagClick={handleTagClick}
-        />
-      ))}
-    </div>
-  );
-};
+// const PromptCardList = ({ data, handleTagClick }) => {
+//   return (
+//     <div className="mt-16 prompt_layout">
+//       {data.map((post) => (
+//         <PromptCard
+//           key={post._id}
+//           post={post}
+//           handleTagClick={handleTagClick}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
-const Feed = ({ data }) => {
+const Feed = () => {
   const [searchText, setSearchText] = useState("");
-  const [allPosts, setAllPosts] = useState(data);
+  const [allPosts, setAllPosts] = useState([]);
 
-  // const fetchPosts = async () => {
-  //   const response = await fetch("/api/prompt", { cache: "no-store" });
-  //   const data = await response.json();
-  //   setAllPosts(data);
-  // };
+  const fetchPosts = async () => {
+    const response = await fetch("/api/prompt", { cache: "no-store" });
+    const data = await response.json();
+    setAllPosts(data);
+  };
 
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
@@ -48,7 +48,15 @@ const Feed = ({ data }) => {
         />
       </form>
 
-      <PromptCardList data={allPosts} handleTagClick={() => {}} />
+      <div className="mt-16 prompt_layout">
+        {allPosts.map((post) => (
+          <PromptCard
+            key={post._id}
+            post={post}
+            handleTagClick={handleTagClick}
+          />
+        ))}
+      </div>
     </section>
   );
 };
