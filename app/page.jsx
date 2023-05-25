@@ -1,6 +1,9 @@
 import Feed from "@components/Feed";
 
-const Home = () => {
+const Home = async () => {
+  const response = await fetch("/api/prompt");
+  const data = await response.json();
+
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
@@ -13,7 +16,7 @@ const Home = () => {
         discover, create and share creative prompts
       </p>
 
-      <Feed />
+      <Feed data={data} />
     </section>
   );
 };

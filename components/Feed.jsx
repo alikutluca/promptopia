@@ -17,19 +17,19 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = () => {
+const Feed = ({ data }) => {
   const [searchText, setSearchText] = useState("");
-  const [allPosts, setAllPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState(data);
 
-  const fetchPosts = async () => {
-    const response = await fetch("/api/prompt", { cache: "no-store" });
-    const data = await response.json();
-    setAllPosts(data);
-  };
+  // const fetchPosts = async () => {
+  //   const response = await fetch("/api/prompt", { cache: "no-store" });
+  //   const data = await response.json();
+  //   setAllPosts(data);
+  // };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   fetchPosts();
+  // }, []);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
