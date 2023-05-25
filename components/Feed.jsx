@@ -29,7 +29,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, [allPosts]);
+  }, []);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
